@@ -2,7 +2,7 @@
 <html>
  <head>
    <meta charset="UTF-8" />
-   <meta name="ad.size" content="width=300,height=250" />
+   <meta name="ad.size" content="width=320,height=100" />
    <meta
      name="viewport"
      content="width=device-width, initial-scale=1 user-scalable=no"
@@ -44,9 +44,11 @@
        display: block;
        top: 0;
      }
+     
      [class*='-scene'] {
        opacity: 0;
      }
+
      [data-scene='0'] .-scene0,
      [data-scene='1'] .-scene1,
      [data-scene='2'] .-scene2,
@@ -90,7 +92,7 @@
 
 
      #canvas {
-       background: #512773;
+       background: #ffffff;
        position: relative;
      }
 
@@ -170,6 +172,30 @@
       }
      }
 
+     @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+     }
+
+     .fadeIn {
+        opacity: 0;
+     }
+
+    [data-scene="1"] .fadeIn{
+        animation: fadeIn 250ms ease-in 200ms forwards;
+    }
+
+    [data-scene="2"] .fadeIn,
+    [data-scene="3"] .fadeIn,
+    [data-scene="4"] .fadeIn {
+        opacity: 1;
+    }
+
      .slideDownFadeIn {
         opacity: 0; 
       }
@@ -185,18 +211,17 @@
       display: none; 
     }
 
-    .zoom-bg {
-      transform-origin: center center;
-      will-change: transform;
-      transform: scale(1);
-      transition: transform 5s linear;
+    .persistentFadeIn {
+        opacity: 0;
+        animation: slideDownfadeIn 250ms ease-in 200ms forwards;
     }
 
-    [data-scene="1"] .-scene1 .zoom-bg,
-    [data-scene="2"] .-scene2 .zoom-bg,
-    [data-scene="3"] .-scene3 .zoom-bg,
-    [data-scene="4"] .-scene4 .zoom-bg {
-      transform: scale(1.1);
+    [data-scene="1"] .persistentFadeIn {
+        animation: slideDownfadeIn 250ms ease-in 200ms forwards;
+    }
+
+    [data-scene="4"] .persistentFadeIn {
+        display: none;
     }
 
    </style>
@@ -213,30 +238,30 @@
    >
     <div>
      <div class="frame -scene1">
-       <img src="./assets/scene1-bg(300x250)@4x.png" class="zoom-bg" style="width: 100%; max-width: 300px;" alt="" />
-       <img src="./assets/scene1-text2.png" class="slideDownFadeIn" style="width: 167px; top: 225px; right: 108px;" alt="">
+       <img src="./assets/scene1-bg(320x100)@4x.png" style="width: 100%; max-width: 728px;" alt="" />
+       <img src="./assets/scene1-text2(320x100)@4x.png" class="slideDownFadeIn" style="width: 140px; top: 68px; left: 18px; animation-delay: 300ms;" alt="">
      </div>
 
      <div class="frame -scene2">
-       <img src="./assets/scene2-bg(300x250)@4x.png" class="zoom-bg" style="width: 100%;" alt="" />
-        <img src="./assets/scene2-text2.png" class="slideDownFadeIn" style="width: 145px; top: 226px; right: 132px;" alt="">
+       <img src="./assets/scene2-bg(320x100)@4x.png" style="width: 100%;" alt="" />
+        <img src="./assets/scene2-text(320x100)@4x.png" class="slideDownFadeIn" style="width: 126px; top: 68px; left: 18px; animation-delay: 200ms;" alt="">
      </div>
 
      <div class="frame -scene3">
-       <img src="./assets/scene3-bg(300x250)@4x.png" class="zoom-bg" style="width: 100%;" alt="" />
-        <img src="./assets/scene3-text2.png" class="slideDownFadeIn" style="width: 111px; top: 226px; right: 163px;" alt="">
+       <img src="./assets/scene3-bg(320x100)@4x.png" style="width: 100%;" alt="" />
+        <img src="./assets/scene3-text(320x100)@4x.png" class="slideDownFadeIn" style="width: 96px; top: 68px; left: 18px; animation-delay: 200ms;" alt="">
      </div>
 
-     <img src="./assets/make-it-a-summer-of(300x250).png" style="width: 140px; top: 175px; left: 24px;"/>
+     <img src="./assets/make-it-a-summer.png" class="persistentFadeIn" style="width: 127px; top: 21px; left: 19px;"/>
     </div>
 
      <div class="frame -scene4">
-       <img src="./assets/scene4-bg(300x250)@4x.png" class="zoom-bg" style="width: 100%;" alt="" />
-       <img src="./assets/scene4-text1.png" class="slideDownFadeIn" style="width: 64px; top: 25px; right: 15px;" alt="">
-       <img src="./assets/scene4-text2.png" class="slideDownFadeIn" style="width: 112px; top: 145px; right: 10px; animation-delay: 400ms;" alt="">
-       <img src="./assets/shine-on-logo(300x250).png" class="slideDownFadeIn" style="width: 34px; top: 202px; right: 23px; animation-delay: 600ms;" alt="">
+       <img src="./assets/scene4-bg(320x100)@4x.png" style="width: 100%;" alt="" />
+       <img src="./assets/scene4-text1(320x100)@4x.png" class="slideDownFadeIn" style="width: 143px; left: 19px; top: 21px;" alt="">
+       <img src="./assets/scene4-text2(320x100)@4x.png" class="slideDownFadeIn" style="width: 64px; top: 70px; left: 20px; animation-delay: 400ms;" alt="">
+       <img src="./assets/scene4-text3(320x100)@4x.png" class="slideDownFadeIn" style="width: 71px; right: 162px; top: 68px; animation-delay: 600ms;" alt="">
      </div>
-      <img src="./assets/shine-on(300x250)@4x.png" style="width: 36px; top: 202px; right: 16px;" alt="">
+      <img src="./assets/shine-on(320x100)@4x.png" class="fadeIn" style="width: 38px; top: 47px; right: 103px;" alt="">
    </a>
 
 
